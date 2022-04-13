@@ -1,0 +1,12 @@
+Software Setup:
+
+JDK 11 :
+
+>java --version
+java 11 2022-03-22
+Java(TM) SE Runtime Environment (build 18+36-2087)
+Java HotSpot(TM) 64-Bit Server VM (build 18+36-2087, mixed mode, sharing)
+
+Intellij idea,vscode,Ecplise
+
+Groovy sdk
