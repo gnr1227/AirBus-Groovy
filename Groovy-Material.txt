@@ -10,3 +10,414 @@ Java HotSpot(TM) 64-Bit Server VM (build 18+36-2087, mixed mode, sharing)
 Intellij idea,vscode,Ecplise
 
 Groovy sdk
+.............................................................................................
+				  Groovy
+.............................................................................................
+What is Groovy? Groovy Programming language?
+
+Groovy is programming language for jvm.
+
+
+JVM -Java Virtual Machine - To run java applications
+
+JVM helps to build platform indepdendent applications.
+
+java application can be written using programming language called "Java programming language"
+
+Java pl
+ -It is high level pl
+ -Object oriented Programming.
+
+Java applications:
+
+Editions:
+
+-JAVA SE - Standard Edition - Core java
+-JAVA EE - Enterprise edition - Server apps - web apps,Web services,databases,distributed...
+-JAVA ME - Micro Edition - Mobile,card,device apps.
+
+Java Technology created by SUN microsystem at 1989,later acquired by Oracle.
+.............................................................................................
+				  Java Technology Standards
+............................................................................................
+
+Standards:
+1.ANSI -  C,SQL  
+2.ECMA - Javascript
+
+Who defines the Java standards?
+JCP - Java Community Process
+
+Java Technologies standardized by JCP Via JSR(Java Specification Request).
+
+JSR-No - JSR-253 - Java 11
+
+Core spec:
+1.jvm spec
+
+2.jse spec
+
+3.jee spec
+   servlet spec
+   webservice spec
+...........................................................................................
+		         JSR 223: Scripting for the JavaTM Platform
+
+
+JSR-223 Spec was released on Jun-09-2003.
+
+Before this specification, only one programming language was there for JVM, Java Programming language.
+
+This spec  aim is to introduc new Programming languages for JVM.
+
+Based on this Spec, the first alternate language was created for JVM -  Groovy Programming language.
+
+Groovy was the first  Scripting language for jvm ,which was created based JSR-223 Spec.
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+		  Groovy is dialect of java which is running on JVM.
+
+
+
+Java Program Flow:
+
+  				    JAVA code  - Hello.java
+					 | 
+                                    java compiler-javac -Hello.class (byte code)
+                                          |
+                                      java Hello - Run time
+					|
+				    Java Runtime Env -JVM
+
+
+
+Poly Glot : many programming language can be executed on single Runtime.
+
+JVM Poly glot.
+       
+                JPL  Groovy   Kotlin   JRuby Scala Clojure .... 
+		-----------------------------------------------
+				|
+			     .class
+				|
+			       JVM
+
+Groovy is programming language inspired from java,Ruby,Javascript,Perl, Smalltalk, Objective-C
+..............................................................................................
+				   Programming language styles
+.............................................................................................
+
+All Programming languag follows the styles / Paradigm (way of writting code)
+
+Common Paradigms:
+
+1.Functional Programming Style
+2.Procedural Based
+3.Object oriented
+3.Rule based
+etc.....
+
+What is C?
+  C is Procedural based programming language.
+
+What is C++?
+  C++ is Object oriented Programming language
+
+What is Java?
+  Java was Object Oriented Programming language
+  Java is Object Oriented Programming,functional style language
+
+What is Javascript?
+  Javascript is Object based, functional style Programming language - Hybrid Style Language.
+
+What is Groovy?
+  Groovy is Object Oriented,functional Style Programming language - Hybrid Style Lanaugage
+
+............................................................................................
+				   Typing
+............................................................................................				  
+Typing defines the data type of "data", data is stored inside place holder called "variable".
+
+Based on Data Type languages can be classified.
+
+1.static typed or strongly typed
+  during variable declaration we must declare type of variable,if not lanaguage compiler gives error
+  int a=10;
+   a=10
+ eg : c,c++,java...
+
+2.dynamic typed or weak typed
+ during variable declaration we need not  declare type of variable. 
+  var a =10;
+  let b=10;
+
+eg: java script,python.....
+
+Groovy is both static and dynamic typed language.
+
+int a=10; //strong/static typing
+def b=90;; //dynamic typed
+
+Groovy is Object Oriented,functional Style,static,dynamic typed Programming language
+..............................................................................................
+				 Style Of Program
+.............................................................................................
+
+if you take any program, which follows some language syntax, which is more difficult to understand. Layman cant understand code.
+
+eg: c program,java program - 
+
+C:
+
+    /*
+     * C program to accept N numbers and arrange them in an ascending order
+     */
+ 
+    #include <stdio.h>
+    void main()
+    {
+ 
+        int i, j, a, n, number[30];
+        printf("Enter the value of N \n");
+        scanf("%d", &n);
+ 
+        printf("Enter the numbers \n");
+        for (i = 0; i < n; ++i)
+            scanf("%d", &number[i]);
+ 
+        for (i = 0; i < n; ++i) 
+        {
+ 
+            for (j = i + 1; j < n; ++j)
+            {
+ 
+                if (number[i] > number[j]) 
+                {
+ 
+                    a =  number[i];
+                    number[i] = number[j];
+                    number[j] = a;
+ 
+                }
+ 
+            }
+ 
+        }
+ 
+        printf("The numbers arranged in ascending order are given below \n");
+        for (i = 0; i < n; ++i)
+            printf("%d\n", number[i]);
+ 
+    }
+
+if you look at this code you cant understand easily because you are not professional coder.
+
+but what if systems enginer need to code? 
+ 
+it is not possible like above. what if every body want to understand code? How code should be?
+
+ Code should be like english statements.
+
+sort 1..10 numbers in desc order - This is code /program
+       ***************************************************************************
+
+
+if code is written based on pure language syntax, those language is called "GPL" -  General Purpose Programming language. -  C,C++,Java,Groovy
+
+if code is written based on  layman/ english like language , those language is called "DSL" -  DOMAIN Specific Programming language. - Groovy
+    "sort 1..10 numbers in desc order" -  DSL code
+
+                        "Groovy can help to write DSL Code"
+
+if you are able to write code more readable(dsl), that code is called "Declarative code /Declarative programming".
+
+if you are writing code which is less readable that code is called "Imperative code".
+
+DSL code:
+ move left,move right, 
+ take 1 cup of milk add 2 gm sugar
+ shutdown machine-1 at 1 pm every day and restart after 2pm 
+
+Machine Health Checkup:
+1.find Machine at all locations
+2.filter machines which are unhealthy
+3.prepare report in pdf mail to healthCheckMaster@tcs.com
+4.do this every day at 1pm
+
+Groovy dsls are easy to understand by stack holders,tools users,end users,dev ops enginers.
+
+Types of DSL Persons:
+
+1.DSL Authors
+   Who creates DSL's - eg Jenkins JOB dsl
+2.DSL Users
+   who uses DSL written by others
+
+............................................................................................
+			Groovy can help us to write more declarative code
+............................................................................................
+Groovy is
+  -object oriented
+  -functional style
+  -dynamic typed
+  -static typed 
+  -delcarative
+  -dsl
+Programming language.
+
+
+Core Features of Groovy Lanaguage:
+
+1.Closures
+2.builders
+3.runtime & compile-time meta-programming
+4.functional programming
+5.type inference and static compilation
+6.Integration with existing java stack.
+
+Groovy Eco System:
+.................
+Groovy is core programming language only.
+
+Web:
+  Dynamic Web Apps | RestFull Web Services
+1.Grails 
+  Framework written using groovy.
+
+Build System:
+  1.ANT
+  2.Maven
+  3.Gradle
+  4.Grape
+
+2.Gradle
+   Build system for java written in groovy
+
+Testing Framework:
+ Junit
+3.Spock:
+  Spock is a testing and specification framework for Java and Groovy applications. What makes it stand out from the crowd is its beautiful and highly expressive specification language.
+
+Tools:
+  Jenkins Pipeline projects
+
+Package Managers:
+
+NPM - javascript
+Nuget -MS .NET
+
+4.SDKMAN!  -Groovy
+
+5.Microservices:
+ Spring with Groovy
+ Micronaut  -Groovy
+
+SOAP UI - SCRIPTS Written in groovy.
+.............................................................................................
+				Tools provided by Groovy
+
+1.compiler 
+  groovyc
+ compile groovy into .class.
+2.groovy
+   To run groovy code. here we dont need to compile.
+  java Main  groovy Main
+3.groovy console
+   -Built in ide to write groovy code
+4.REPL  - Read Evaulate Print Loop : Interactive cmd line tool.-groovysh : groovy shell - Wrapper to low level services.
+
+
+         Groovy programs are saved with "filename.groovy"
+..............................................................................................
+				Groovy Programming Style
+..............................................................................................
+
+1.class based
+..............
+
+java code
+
+package com.mycom;
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+
+}
+
+if you look at this code, is java, which always starts with class and main method, without this syntax, we cant run code . - This is called class based.
+
+2.script based
+
+helloworld.groovy
+
+println "Hello Groovy World"
+
+The above code
+
+- dont have its own class like java
+- dont have main method like java
+- dont have semicollons like java
+
+Any how you are going to run on JVM, but how jvm can run this code without main method and main class.
+   Groovy compiler adds class and main method behind the scene.
+
+
+After compilation Groovy compiler writes a code like below
+
+import org.codehaus.groovy.runtime.InvokerHelper;
+
+class HelloWorld extends Script {    
+                 
+    def run() {                                 
+  	println "hello";               
+    }
+    static void main(String[] args) {           
+        InvokerHelper.runScript(HelloWorld, args)     
+    }
+}
+
+1.The HelloWorld class extends the groovy.lang.Script class
+
+2.groovy.lang.Script requires a run method returning a value
+  the script body goes into the run method
+
+3.the main method is automatically generated
+ 
+4.and delegates the execution of the script on the run   method
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+Groovy topics:
+.............
+
+Groovy Language:
+...............
+
+1.Language Fundamentals
+2.Groovy Object orientations
+3.Groovy Closures and Functional Programming
+4.Groovy Meta Programming
+5.Groovy DSL
+6.Groovy and Builders
+7.Groovy and Collections
+8.Groovy and IO
+    -File,
+    -JSON
+    -XML
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+1.Language Fundamentals
+
+1.1.Type system
+1.2.literals
+1.3.variables
+1.4.operators
+1.5.control structures
+1.6.iterators/loops
+
+
+
+
