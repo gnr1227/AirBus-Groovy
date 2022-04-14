@@ -108,7 +108,7 @@ Groovy is programming language inspired from java,Ruby,Javascript,Perl, Smalltal
 				   Programming language styles
 .............................................................................................
 
-All Programming languag follows the styles / Paradigm (way of writting code)
+All Programming language follows the styles / Paradigm (way of writting code)
 
 Common Paradigms:
 
@@ -417,6 +417,427 @@ Groovy Language:
 1.4.operators
 1.5.control structures
 1.6.iterators/loops
+
+..........................................................................................
+				  variable declaration,Type System,literals
+...........................................................................................
+
+Groovy is dynamic , static typed programming lanugage.
+
+variables are other wise called as "identifiers"
+
+syntax:
+
+Strong typing
+ 
+type variable=value
+
+eg;
+ int a =10;
+
+
+//declaring variables - strong Typing / static typed programming
+int a=10
+println("a = " +  a)  //System.out.println("")
+//a="hello"
+String name="Subramanian"
+println("Your Name " + name) // "" + =>String concatenation.
+
+if you run this code, you will get compile time error.
+
+Caught: org.codehaus.groovy.runtime.typehandling.GroovyCastException: Cannot cast object 'hello' with class 'java.lang.String' to class 'int'
+org.codehaus.groovy.runtime.typehandling.GroovyCastException: Cannot cast object 'hello' with class 'java.lang.String' to class 'int'
+	at strongtyping.run(strongtyping.groovy:4)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+
+Data Types:
+
+1.numbers
+
+whole numbers - integers
+
+byte
+short
+int
+long
+
+Size
+     byte
+ *        -128 to 127
+ *        1 byte
+ *      short
+ *       -32,768 to 32767
+ *       2 bytes
+ *      int
+ *       -2Powof31 to 2powerof32
+ *       4 bytes
+ *       long
+ *       - -2power63 to 2powerof64
+ *       8 bytes
+
+decimal numbers
+float
+double
+    float - 4bytes
+    double -8bytes
+2.characters
+
+char -  single char 
+String - collection of chars
+
+3.boolean
+boolean 
+
+
+
+//whole numbers
+//byte b = 180;
+byte b=10;
+short s = 90;
+int i = 1000;
+long lng = 199999;
+println("byte => " + b);
+println("Short => " + s)
+println("Int => " + i);
+println("Long => " + lng)
+
+//Decimal Numbers
+float price = 10.5f; // 4 bytes
+println("Float => " + price)
+double distance = 187.7865; //8 bytes
+println("Double => " + distance);
+
+
+//characters
+char c = 'A'; //characters must be specified with single character
+println("Character =>" + c);
+//String
+String name = "Subramanian";
+String city = "Coimbatore";
+String zipcode = "642001"
+print("Your Details " + name + " , " + city + " , " + zipcode)
+
+
+
+//booleans store true or false - 1 bit 0 or 1
+
+boolean isValid = true;
+boolean isEnabled = false;
+boolean isAlive = true;
+println("isValid " + isValid)
+println("Is Enabled" + isEnabled)
+println("Is Alive " + isAlive)
+..............................................................................................
+			    Category of data type and Variable
+.............................................................................................
+
+1.Primitive Types
+  byte,int,short,long,float,double,char,boolean
+if any variable is declared with these types are called, primitive variables
+2.Reference Types
+  Object Types, if a variable is declared with Objects.
+ if any variable is delclared with object type are called "reference variables"
+ String name;
+..............................................................................................
+				  Dynamic Typed
+.............................................................................................
+
+The type of variable can be changed during runtime, groovy is dynamic typed
+
+syntax;
+
+def identifier(variable)=value(literal)
+
+def - keyword
+//Dynamic type declaration
+
+def a = 10
+println("A value => " + a);
+//now change a value to different type
+a = true
+println("A value => " + a);
+a = "Hello"
+println("A value => " + a);
+a = 89.90
+println("A value => " + a);
+..........................................................................................
+How to know the Type of Identifier?
+  
+def myvar=100;
+
+instanceof operator used to know the type of variable.
+
+instanceof operator works only with reference types
+
+myvar instanceof int -  compile time error
+
+int a =10;
+println(a instanceof int);  // here you are checking whether a belongs to int
+
+Error
+Groovyc: Cannot perform instanceof check against primitive type int
+
+
+int a =10;
+String name = ""
+println(name instanceof  String);
+
+output:
+ true
+..............................................................................................
+
+def b =10;
+println(b instanceof  int);
+
+ Here we get error, cant perform instanceof check against primitive type int.
+
+In order to understand this, we need to know one more concept.
+
+When we write dynamic typed program in groovy, groovy never assign primitive types to a variable. Groovy assigns reference types.
+---------------------------------------------------------------------------------------------
+				Wrapper Types 
+.............................................................................................
+
+Every Primitive type has eq Reference Types, which introduced in Java.
+
+Primitive  Reference Type
+ byte     - Byte 
+ short    - Short
+ int      - Integer
+ long     - Long
+ float    - Float
+ double   - Double 
+ boolean  - Boolean
+ char     - Character 
+
+//int a = 10;
+//String name = ""
+////println(a instanceof int);  // here you are checking whether a belongs to int
+//println(name instanceof String);
+
+def b = 10
+println("b belongs to Integer  " + (b instanceof Integer))
+println("b belongs to Byte  " + (b instanceof Byte))
+
+def c = 890000009999999
+println("c belongs to Integer  " + (c instanceof Integer))
+println("c belongs to Long  " + (c instanceof Long))
+
+
+Code challange:
+...............
+In java, i want to store the below number, findout right data type.
+
+myvariable =2232333333333333333333333333333333333331212121212092347329473433483473984732948734983473984739473498473289472394238437498479487948749387492479479347943794479;
+
+
+//int a = 10;
+//String name = ""
+////println(a instanceof int);  // here you are checking whether a belongs to int
+//println(name instanceof String);
+
+def b = 10
+println("b belongs to Integer  " + (b instanceof Integer))
+println("b belongs to Byte  " + (b instanceof Byte))
+
+def c = 890000009999999
+println("c belongs to Integer  " + (c instanceof Integer))
+println("c belongs to Long  " + (c instanceof Long))
+
+def bigValue=2232333333333333333333333333333333333331212121212092347329473433483473984732948734983473984739473498473289472394238437498479487948749387492479479347943794479;
+println("bigValue belongs to BigInteger " + (bigValue instanceof BigInteger))
+..............................................................................................					Type Conversion
+..............................................................................................
+
+Java:
+ 
+int a =10
+
+here
+ int is type
+ a is variable
+ 10 is value(literal)
+
+What is type of "a"?
+  int
+What is type of "10"?
+ 
+ Do you think that the type of a and type of "10" would be the same?
+ No! 
+
+      "The type of variable and type of value is different"
+
+in Integer family : the default type of value is "int"
+
+int a =10;
+
+a's type is int
+10's type is also int.
+
+byte b=10;
+
+Here what is type of b?
+byte
+Here what is type of 10;
+int
+
+byte b=10(int)
+
+1 byte  =  4 byte
+
+
+Type conversion :
+ Converting from one type to another type.
+
+ int to byte
+
+Types of conversion:
+
+ - Implicit conversion
+     conversion is taken automatically.
+
+    byte b =10;  === byte == int
+    here 10(int) is converted into byte.   
+    int b =9000; ==>int === int
+
+eg:
+        byte a = 10;  //byte <=== int
+        short s =100; // short <===int
+        int i =10 ;   // int <=== int
+        long lng = 1000; //long <== int
+
+ - Explicit conversion
+      We need to convert manually.
+  While conversion there is possibility of data loss.
+
+  Syntax
+ 
+      targettype = (targetype)sourcetype
+      byte b = (byte)900;
+  
+      int a = 10; //10 type is int---size 4 bytes
+        byte b = 19; // 19 type is ? - int only  // byte(2) === int(4)
+        //byte b1 =9000; // here 9000 cant be stored inside b1 because b1 capacity is lesser than value
+        //what if i want to store 9000 inside b1
+        //type conversion
+        byte b2 = (byte)10000;
+        System.out.println(b2);
+
+
+Decimal numbers:
+................
+What is default type of decimals?
+
+float price = 10.5;  // float === double === 4 bytes ===8 bytes- error
+
+Decimal numbers:
+................
+What is default type of decimals?
+
+float price = 10.5;  // float === double === 4 bytes ===8 bytes- error
+
+what is type of 10.5?
+  double.
+
+type conversion for floating points
+
+ways:
+
+1. by adding f suffix
+	
+        float price = 10.5f;
+
+here 10.5(double) is converted into float.
+
+2.by using () syntax
+      float price1 = (float) 10.5;
+
+..............................................................................................
+Characters:
+
+the value of char type is int
+
+        char c = 'A'; //int
+        char c1 = 99; //int
+        System.out.println(c1 + " " + c);
+        System.out.println((char) c1 + " " + (int) c);
+
+byte b = 10000000;
+float f = 90.89;
+println("byte b =>" + b)
+println("flat f =>" + f)
+............................................................................................
+			 Dynamic Typing and Type Conversion
+...........................................................................................
+
+def a = 100
+  The type of a is "Integer"
+
+What if i want to mention a type as 
+
+=>Byte
+=>Short
+=>Long
+
+Groovy offers special operator "as" can convert and represent type 
+
+def myvar = 100;
+println myvar instanceof Integer /// int
+//What if i want to convert into Short, i want to represent in side short/long/byte
+def myvar2 = 100 as Short;
+println myvar2 instanceof Integer /// int
+println myvar2 instanceof Short /// int
+.............................................................................................
+				Other Type conversion
+.............................................................................................
+
+1.Boxing
+2.Unboxing
+ 
+Boxing and Un boxing : converting primitive to wrapper and wrapper to primitive
+ 
+
+Java :
+
+Integer j = 10;
+int y = j * 10;
+System.out.println(y);
+
+//type conversion
+//int is converted to byte.
+byte b = 10000;
+println b;
+byte b1 = (byte) 10000;
+println b1;
+
+float f = 10.5;
+float f1 = 10.5f;
+
+println f;
+println f1;
+
+Groovy boxing and unboxing:
+
+
+def a =100  // here 100 is primitive(int)  a is Integer  Integer a = 100
+int b = a;  // b is int a is Integer  int b = Integer b
+println("a " + a + " b" + b )
+.............................................................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
