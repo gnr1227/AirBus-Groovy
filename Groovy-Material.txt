@@ -823,22 +823,550 @@ def a =100  // here 100 is primitive(int)  a is Integer  Integer a = 100
 int b = a;  // b is int a is Integer  int b = Integer b
 println("a " + a + " b" + b )
 .............................................................................................
+				comments
 
 
+Comments;
+
+1.single line comment:
+
+//
+
+2.Muliti line comment
+/*
+
+*/
+
+3.Groovydoc comment
+ /**
+ *
+ *
+ /
+
+4.Shebang line
+
+#! /user/bin/env/ groovy
+
+  This for running script directly from the commandline in unix operating system.
+
+///////////////////////////////////////////////////////////////////////////////////////////
+                               Key words from groovy
 
 
+NOte: 
+
+ Keywords cant be used as value or variable in groovy.
+
+ eg: 
+ as, break,case,catch,class, instance of,for, goto def, enum do, const,...........
+//////////////////////////////////////////////////////////////////////////////////////////////
+				  Coding standards
+..............................................................................................
+
+There are different types  of code
+
+1.variables
+2.functions
+3.classes
+4.methods
+5.interfaces
+	
+variables:
+
+1.variable name must be meaningfull to the problem.
+
+def a=10; //
+def productId=10
+def firstName="Subramanian"
+
+2.variables must be camelcased.
+
+startswithSmall letter
+ 
+def id=1
+def name="subramanian"
+def firstName="Dhivya Sree"
+
+3.variables can  
+- start with letter,
+- start with $
+- start with _
+- not with numbers
+eg:
+   def $id
+   def _name
+   def 1Name => invalid
+............................................................................................
+				Difference with Java
+............................................................................................
 
 
+Groovy makes code as simple as possible.Groovy uses lot of boilerplate code on behalf of us.
+
+Typical java program structure :
+
+package com.mycompany.project.module.submodule;
+
+import java.util.*;
+import java.math.BigInteger;
 
 
+public class MyClass{
+
+ public static void main(String args[]){
+
+ }
+ 
+}
+
+What is package?
+  
+   It is way to organize the code into file and folders, physically and logically.
+ 
+in java and groovy code is organized as files and folders inside disk.
+
+Inside code , we use the keyword called "package" key word which represents "this current file belongs to "com/airbus" folder
 
 
+The default Package:
+
+ if you dont save file inside any subfolders like com/airbus, the programs can be saved inside
+project root dir "src"
+ This is called default package, no package statement is given.
+
+In groovy scripts are written without package statement, which is valid and also recommended
+..............................................................................................
+				 Types of packages
+..............................................................................................
+
+1.custom packages
+   packages created by developer while write apps
+
+package com.airbus.jenkins.pipelines
+
+package follows some coding standards defined by SUN microsystem when java was created.
+
+any package has to start with
+ com - company
+ org - organization
+ companyName 
+    hudson.
+
+secondconvention
+  companyName -  airbus
+Thirdconvention
+  Name of the Project - jenkins
+Fourth Convention
+  Module name  - pipelines 
 
 
+all private projects starts with "com"
+
+all opensource projects starts with "org"
+
+2.built in packages
+
+ The packages provided by language like java,groovy,scala,kotlin
+
+java Language:
+  java.
+  javax.
+
+Groovy Lanaguage
+  groovy.lang
+  groovy.util
+  groovy.sql
+  org.apache.groovy.antlr
+
+3.third party packages
+  The package developed by third parties used by us.
+
+Mostly all tools and frameworks, libs are distrbuted as third party packages.
+
+eg:
+ Spring Framework
+ Jenkins
+..............................................................................................					  How to use packages inside code?
+..............................................................................................
+How to use package features inside our code?
+
+using the keyword called "import" , to link programs inside our programs
+
+syntax:
+ import com.airbus.jenkins.pipelines.CustomJob;
+ 
+
+eg:
+package com.airbus.jenkins.pipelines
+
+class CustomJob {
+    void start(){
+        println ("......Build Starts.....")
+    }
+}
+
+How to use This class?
+
+Syntax : 1 - Import only one class
+
+import com.airbus.jenkins.pipelines.CustomJob
+
+def job = new CustomJob()
+job.start()
 
 
+Syntax : 2 : import all classes
+
+import com.airbus.jenkins.pipelines.* // import all classes from inside this dir.
+
+def job = new CustomJob()
+job.start()
+def pipeline = new CustomPipeline()
+pipeline.init()
+
+The 2nd syntax not recommended mostly , the reason is which imports all classes in one short so which degreads performance.
+.............................................................................................
+				 common packages in java and groovy
+.............................................................................................
+
+java.lang - The fundamental language features are provided inside this package without this package we cant write even one single java program.
+
+public class TypeDemo {
+    public static void main(String[] args) {
+        byte a = 10;  //byte <=== int
+        short s = 100; // short <===int
+        int i = 10;   // int <=== int
+        long lng = 1000; //long <== int
+
+        //explicit conversion
+        byte b = (byte) 10000;
 
 
+        //here f is sufffix used to convert double to float
+        float f = 10.5f;  // default type of precision is double
+        float f1 = (float) 10.89;
+
+        //Reference Type
+        Integer myNumber =100;
+        //primitive type
+        int myNewNumber =myNumber; //int <== Integer -  Boxing
+
+        Integer myNumber2 = myNewNumber; //Integer <=== int Unboxing
+
+    }
+}
+
+if you want to compile and run we need java.lang package must have been imported.
+
+here in the above we have not imported any java.lang package ,still works how?
+
+                   "java by default imports java.lang package"
+
+		     In java only one default package 
+.............................................................................................
+				Groovy Packages
+.............................................................................................
+
+groovy supports both java packages as well as groovy own packages.
+
+groovy.lang is similar to java.lang has all the language core features.
+
+without lang package , we cant write any groovy program..
+
+Groovy compiler automatimatically imports lot of default packages.
+
+java:
+1.java.io.*;
+2.java.lang.*;
+3.java.math.BigDecimal
+4.java.math.BigInteger
+5.java.net.*
+6.java.util.*
+
+Groovy language also has its own packages
+
+ Groovy has extend from java, which supports all java packages + who supports extra packages.
+
+groovy.XXX
+groovy.lang.*;
+groovy.util.*;
+..............................................................................................
+					Values(literals) In Groovy
+.............................................................................................
+
+1.Strings && Characters
+2.Numbers
+3.Booleans
+4.Lists
+5.Arrays
+6.Map
+7.Objects
+
+Strings:
+ Text literals are represented in the form of collection of characters called strings.
+ Strings are Objects.
+ Strings are instance of java.lang.String class as well as groovy.lang.GString
+ Characters in groovy is represented in String object.
+ Each character is 16-bit unicode character.
 
 
+String declaration Patterns:
+............................
 
+1.single quoted  - ''
+2.Double quoted  = "" 
+3.Triple  Single Quoted = '''
+4.Triple double quoted = """
+5.slashy quoted - / /
+6.Dollar slashy quoted - $/ /
+
+
+1.single quote 
+2.double qutote
+//String declarations
+
+//single quote
+
+def str1 ='Hello,Groovy'
+//double quote
+def str2 ="Hello,Groovy How are you?"
+
+//Test both variables are from java or gString
+println("Single Quote is Instance of java.lang.String => " +  (str1 instanceof  java.lang.String))
+println("Double Quote is Instance of java.lang.String => " +  (str2 instanceof  java.lang.String))
+..............................................................................................
+				   String Concatnation
+.............................................................................................
+
+Using + operator:
+.................
+This operator derived from java lang.
+
+//Java style of String concatenation  
+println "............................."
+def name = "Subramanian";
+def greeting = 'Hello ' + name;
+println greeting;
+println greeting instanceof java.lang.String;
+//
+def firstName="Subramanian";
+def lastName = "Murugan"
+println("Name " + firstName + lastName)
+
+Interpolation:
+ -It is replacement of existing string concation
+ -way of access variables/expression inside string is so different
+ -This feature is not available in java language
+ 
+in order to add interpolation syntax, groovy has added a new class groovy.lang.GString
+
+GString Syntax:
+
+ "${expression}"
+ "$expression"
+
+//How to interpolate strings
+
+def name = "Subramanian"
+//here message type is groovy.GString not java.lang.String
+def message = "Hello ${name}" // string interpolation
+println(message)
+
+//
+def host = "airbus.com"
+def port = 8080
+def url = "/api"
+def path = "/pipelines"
+
+//def uri = "http://${host}:${port}${url}${path}";
+def uri = "http://$host:$port$url$path";
+
+println(uri)
+..............................................................................................
+				Multi line Strings
+.............................................................................................
+
+//Multi line java synatx:
+String title = "Airbus";
+String doc = "<html>" +
+        "<head>" +
+        "<title>" + title + "</title>" +
+        "<body>" +
+        "<h1> Hello</h1>" +
+        "</body>" +
+        "</body></html>";
+System.out.println(doc);
+//Groovy Style :  ''' ''' Using single triple quote : you cant interpolate
+def mydoc ='''
+  <html>
+  <head>
+    <title>Airbus</title>
+  </head>
+  <body>
+     <h1>Hello</h1>
+  </body>
+  </html>  
+'''
+println(mydoc)
+//double triple quote
+
+def message="Hello"
+
+def mynewDoc = """
+  <html>
+  <head>
+    <title>$title</title>
+  </head>
+  <body>
+     <h1>$message</h1>
+  </body>
+  </html>  
+"""
+println(mynewDoc)
+............................................................................................
+				Escaping Special Characters
+............................................................................................
+
+//here i want to print single
+def quote = " Hello ! how are you? \\ i am fine what \" about you ";
+println quote;
+quote = ' Hello ! how are you? \' i am fine what about you';
+println quote;
+
+quote = " Hello ! how are you? \t \t i am fine what \n about you";
+println quote;
+
+def priceInEuro = "Price in Euro \u20AC";
+println priceInEuro
+
+special characters you can escape:
+...................................
+
+\b - backspace
+\f - formfeed
+\t  -tab
+\s -single space
+\' - single quote within single quoted.
+\" - double quote witthin another double quote
+\unicode - unicode escape
+..............................................................................................
+				Slashy String
+..............................................................................................
+Strings inside slash / strings /
+
+Slashy strings are like other string declaration(type of declaration)
+Which encapsulate all string declaration features
+
+// '' ,"" ,'''''' ,""" """ ,"\special" "interploation" === \slash\
+
+
+//Slashy Strings
+//syntax1 : normal string
+def str = /This is slashy string/
+println str
+//Syntax 2 : it allows special characters as
+def myquote =/How are you! \i am fine \;/;
+println myquote
+//syntax 3 : multi line with slashy strings
+def doc = / hello
+ how are you?
+ welcome
+ greetings   
+/;
+println doc;
+
+// syntax 4 : interpolation with slashy strings
+def name='Subramanian'
+def greeting= / Hello ${name} /;
+println greeting
+
+Applications of Slashy;
+
+-Text Processing:
+
+  String processing can be done in many ways
+  -Using string apis and logic
+  -Regular Expression : Regx
+     It is one of the DSL Programming language, introduced inside UNIX operating in order to      simlify the Text processing using "some special characters"
+  After popularity of Regex, many languages started integrating regular expressions features as language apis.
+
+Java introduced regualar expressions via java.util.regex package 
+
+
+String mydata = " hey \; \$ hello 0 1, how are y subramanian , 7m3 ";
+
+i want  to extract nos
+i want to extract special characters
+i want to only $
+
+Task: write a code-java to extract nos,spicial characters,$
+
+
+Regular Expression Implmentation:
+  Regular expression is dsl language to process strings / text
+  Regular expression works based on symbols called "Patterns"
+ 
+
+Regular expression in java:
+
+java.util.regex;
+
+Regular expression uses symbols
+ +
+ *
+ ~
+ {}
+ ?
+https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html
+
+Character classes
+[abc]	a, b, or c (simple class)
+[^abc]	Any character except a, b, or c (negation)
+[a-zA-Z]	a through z or A through Z, inclusive (range)
+[a-d[m-p]]	a through d, or m through p: [a-dm-p] (union)
+[a-z&&[def]]	d, e, or f (intersection)
+[a-z&&[^bc]]	a through z, except for b and c: [ad-z] (subtraction)
+[a-z&&[^m-p]]	a through z, and not m through p: [a-lq-z](subtraction)
+
+
+Simple Pattern syntax:
+......................
+
+ \d+ -match /find any number in the string - match any number one or more times
+
+Declare pattern in java
+  
+   String pattern =  "\d+"; -  this is compile time error because, special characters
+needed to be escaped.
+   
+   String pattern ="\\d+" -  now it is vaild , because we have escaped \+ chacter by \
+
+Drawback of this syntax:
+  Very complex , when we form complex regular expressions
+eg:
+ "\\+d\\+d\\*d ^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$
+
+package com.airbus.strings;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegularExpressionApp
+{
+    public static void main(String[] args) {
+        //Declare pattern
+        String pattern = "\\d+";  //what you want
+        System.out.println(pattern);
+        //find out all numbers from this string
+        String inputString ="hey  hello 0 1, how subramanian 1 , 7m3";
+        //logic to extract nos from the string
+        //Compile the Pattern
+        Pattern compiledPattern = Pattern.compile(pattern);
+        Matcher digitMatcher =compiledPattern.matcher(inputString);
+        System.out.println("Source String "+ inputString);
+        while(digitMatcher.find()) {
+            System.out.println(digitMatcher.group());
+        }
+
+    }
+}
