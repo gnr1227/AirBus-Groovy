@@ -823,22 +823,1188 @@ def a =100  // here 100 is primitive(int)  a is Integer  Integer a = 100
 int b = a;  // b is int a is Integer  int b = Integer b
 println("a " + a + " b" + b )
 .............................................................................................
+				comments
+
+
+Comments;
+
+1.single line comment:
+
+//
+
+2.Muliti line comment
+/*
+
+*/
+
+3.Groovydoc comment
+ /**
+ *
+ *
+ /
+
+4.Shebang line
+
+#! /user/bin/env/ groovy
+
+  This for running script directly from the commandline in unix operating system.
+
+///////////////////////////////////////////////////////////////////////////////////////////
+                               Key words from groovy
+
+
+NOte: 
+
+ Keywords cant be used as value or variable in groovy.
+
+ eg: 
+ as, break,case,catch,class, instance of,for, goto def, enum do, const,...........
+//////////////////////////////////////////////////////////////////////////////////////////////
+				  Coding standards
+..............................................................................................
+
+There are different types  of code
+
+1.variables
+2.functions
+3.classes
+4.methods
+5.interfaces
+	
+variables:
+
+1.variable name must be meaningfull to the problem.
+
+def a=10; //
+def productId=10
+def firstName="Subramanian"
+
+2.variables must be camelcased.
+
+startswithSmall letter
+ 
+def id=1
+def name="subramanian"
+def firstName="Dhivya Sree"
+
+3.variables can  
+- start with letter,
+- start with $
+- start with _
+- not with numbers
+eg:
+   def $id
+   def _name
+   def 1Name => invalid
+............................................................................................
+				Difference with Java
+............................................................................................
+
+
+Groovy makes code as simple as possible.Groovy uses lot of boilerplate code on behalf of us.
+
+Typical java program structure :
+
+package com.mycompany.project.module.submodule;
+
+import java.util.*;
+import java.math.BigInteger;
+
+
+public class MyClass{
+
+ public static void main(String args[]){
+
+ }
+ 
+}
+
+What is package?
+  
+   It is way to organize the code into file and folders, physically and logically.
+ 
+in java and groovy code is organized as files and folders inside disk.
+
+Inside code , we use the keyword called "package" key word which represents "this current file belongs to "com/airbus" folder
+
+
+The default Package:
+
+ if you dont save file inside any subfolders like com/airbus, the programs can be saved inside
+project root dir "src"
+ This is called default package, no package statement is given.
+
+In groovy scripts are written without package statement, which is valid and also recommended
+..............................................................................................
+				 Types of packages
+..............................................................................................
+
+1.custom packages
+   packages created by developer while write apps
+
+package com.airbus.jenkins.pipelines
+
+package follows some coding standards defined by SUN microsystem when java was created.
+
+any package has to start with
+ com - company
+ org - organization
+ companyName 
+    hudson.
+
+secondconvention
+  companyName -  airbus
+Thirdconvention
+  Name of the Project - jenkins
+Fourth Convention
+  Module name  - pipelines 
+
+
+all private projects starts with "com"
+
+all opensource projects starts with "org"
+
+2.built in packages
+
+ The packages provided by language like java,groovy,scala,kotlin
+
+java Language:
+  java.
+  javax.
+
+Groovy Lanaguage
+  groovy.lang
+  groovy.util
+  groovy.sql
+  org.apache.groovy.antlr
+
+3.third party packages
+  The package developed by third parties used by us.
+
+Mostly all tools and frameworks, libs are distrbuted as third party packages.
+
+eg:
+ Spring Framework
+ Jenkins
+..............................................................................................					  How to use packages inside code?
+..............................................................................................
+How to use package features inside our code?
+
+using the keyword called "import" , to link programs inside our programs
+
+syntax:
+ import com.airbus.jenkins.pipelines.CustomJob;
+ 
+
+eg:
+package com.airbus.jenkins.pipelines
+
+class CustomJob {
+    void start(){
+        println ("......Build Starts.....")
+    }
+}
+
+How to use This class?
+
+Syntax : 1 - Import only one class
+
+import com.airbus.jenkins.pipelines.CustomJob
+
+def job = new CustomJob()
+job.start()
+
+
+Syntax : 2 : import all classes
+
+import com.airbus.jenkins.pipelines.* // import all classes from inside this dir.
+
+def job = new CustomJob()
+job.start()
+def pipeline = new CustomPipeline()
+pipeline.init()
+
+The 2nd syntax not recommended mostly , the reason is which imports all classes in one short so which degreads performance.
+.............................................................................................
+				 common packages in java and groovy
+.............................................................................................
+
+java.lang - The fundamental language features are provided inside this package without this package we cant write even one single java program.
+
+public class TypeDemo {
+    public static void main(String[] args) {
+        byte a = 10;  //byte <=== int
+        short s = 100; // short <===int
+        int i = 10;   // int <=== int
+        long lng = 1000; //long <== int
+
+        //explicit conversion
+        byte b = (byte) 10000;
+
+
+        //here f is sufffix used to convert double to float
+        float f = 10.5f;  // default type of precision is double
+        float f1 = (float) 10.89;
+
+        //Reference Type
+        Integer myNumber =100;
+        //primitive type
+        int myNewNumber =myNumber; //int <== Integer -  Boxing
+
+        Integer myNumber2 = myNewNumber; //Integer <=== int Unboxing
+
+    }
+}
+
+if you want to compile and run we need java.lang package must have been imported.
+
+here in the above we have not imported any java.lang package ,still works how?
+
+                   "java by default imports java.lang package"
+
+		     In java only one default package 
+.............................................................................................
+				Groovy Packages
+.............................................................................................
+
+groovy supports both java packages as well as groovy own packages.
+
+groovy.lang is similar to java.lang has all the language core features.
+
+without lang package , we cant write any groovy program..
+
+Groovy compiler automatimatically imports lot of default packages.
+
+java:
+1.java.io.*;
+2.java.lang.*;
+3.java.math.BigDecimal
+4.java.math.BigInteger
+5.java.net.*
+6.java.util.*
+
+Groovy language also has its own packages
+
+ Groovy has extend from java, which supports all java packages + who supports extra packages.
+
+groovy.XXX
+groovy.lang.*;
+groovy.util.*;
+..............................................................................................
+					Values(literals) In Groovy
+.............................................................................................
+
+1.Strings && Characters
+2.Numbers
+3.Booleans
+4.Lists
+5.Arrays
+6.Map
+7.Objects
+
+Strings:
+ Text literals are represented in the form of collection of characters called strings.
+ Strings are Objects.
+ Strings are instance of java.lang.String class as well as groovy.lang.GString
+ Characters in groovy is represented in String object.
+ Each character is 16-bit unicode character.
+
+
+String declaration Patterns:
+............................
+
+1.single quoted  - ''
+2.Double quoted  = "" 
+3.Triple  Single Quoted = '''
+4.Triple double quoted = """
+5.slashy quoted - / /
+6.Dollar slashy quoted - $/ /
+
+
+1.single quote 
+2.double qutote
+//String declarations
+
+//single quote
+
+def str1 ='Hello,Groovy'
+//double quote
+def str2 ="Hello,Groovy How are you?"
+
+//Test both variables are from java or gString
+println("Single Quote is Instance of java.lang.String => " +  (str1 instanceof  java.lang.String))
+println("Double Quote is Instance of java.lang.String => " +  (str2 instanceof  java.lang.String))
+..............................................................................................
+				   String Concatnation
+.............................................................................................
+
+Using + operator:
+.................
+This operator derived from java lang.
+
+//Java style of String concatenation  
+println "............................."
+def name = "Subramanian";
+def greeting = 'Hello ' + name;
+println greeting;
+println greeting instanceof java.lang.String;
+//
+def firstName="Subramanian";
+def lastName = "Murugan"
+println("Name " + firstName + lastName)
+
+Interpolation:
+ -It is replacement of existing string concation
+ -way of access variables/expression inside string is so different
+ -This feature is not available in java language
+ 
+in order to add interpolation syntax, groovy has added a new class groovy.lang.GString
+
+GString Syntax:
+
+ "${expression}"
+ "$expression"
+
+//How to interpolate strings
+
+def name = "Subramanian"
+//here message type is groovy.GString not java.lang.String
+def message = "Hello ${name}" // string interpolation
+println(message)
+
+//
+def host = "airbus.com"
+def port = 8080
+def url = "/api"
+def path = "/pipelines"
+
+//def uri = "http://${host}:${port}${url}${path}";
+def uri = "http://$host:$port$url$path";
+
+println(uri)
+..............................................................................................
+				Multi line Strings
+.............................................................................................
+
+//Multi line java synatx:
+String title = "Airbus";
+String doc = "<html>" +
+        "<head>" +
+        "<title>" + title + "</title>" +
+        "<body>" +
+        "<h1> Hello</h1>" +
+        "</body>" +
+        "</body></html>";
+System.out.println(doc);
+//Groovy Style :  ''' ''' Using single triple quote : you cant interpolate
+def mydoc ='''
+  <html>
+  <head>
+    <title>Airbus</title>
+  </head>
+  <body>
+     <h1>Hello</h1>
+  </body>
+  </html>  
+'''
+println(mydoc)
+//double triple quote
+
+def message="Hello"
+
+def mynewDoc = """
+  <html>
+  <head>
+    <title>$title</title>
+  </head>
+  <body>
+     <h1>$message</h1>
+  </body>
+  </html>  
+"""
+println(mynewDoc)
+............................................................................................
+				Escaping Special Characters
+............................................................................................
+
+//here i want to print single
+def quote = " Hello ! how are you? \\ i am fine what \" about you ";
+println quote;
+quote = ' Hello ! how are you? \' i am fine what about you';
+println quote;
+
+quote = " Hello ! how are you? \t \t i am fine what \n about you";
+println quote;
+
+def priceInEuro = "Price in Euro \u20AC";
+println priceInEuro
+
+special characters you can escape:
+...................................
+
+\b - backspace
+\f - formfeed
+\t  -tab
+\s -single space
+\' - single quote within single quoted.
+\" - double quote witthin another double quote
+\unicode - unicode escape
+..............................................................................................
+				Slashy String
+..............................................................................................
+Strings inside slash / strings /
+
+Slashy strings are like other string declaration(type of declaration)
+Which encapsulate all string declaration features
+
+// '' ,"" ,'''''' ,""" """ ,"\special" "interploation" === \slash\
+
+
+//Slashy Strings
+//syntax1 : normal string
+def str = /This is slashy string/
+println str
+//Syntax 2 : it allows special characters as
+def myquote =/How are you! \i am fine \;/;
+println myquote
+//syntax 3 : multi line with slashy strings
+def doc = / hello
+ how are you?
+ welcome
+ greetings   
+/;
+println doc;
+
+// syntax 4 : interpolation with slashy strings
+def name='Subramanian'
+def greeting= / Hello ${name} /;
+println greeting
+
+Applications of Slashy;
+
+-Text Processing:
+
+  String processing can be done in many ways
+  -Using string apis and logic
+  -Regular Expression : Regx
+     It is one of the DSL Programming language, introduced inside UNIX operating in order to      simlify the Text processing using "some special characters"
+  After popularity of Regex, many languages started integrating regular expressions features as language apis.
+
+Java introduced regualar expressions via java.util.regex package 
+
+
+String mydata = " hey \; \$ hello 0 1, how are y subramanian , 7m3 ";
+
+i want  to extract nos
+i want to extract special characters
+i want to only $
+
+Task: write a code-java to extract nos,spicial characters,$
+
+
+Regular Expression Implmentation:
+  Regular expression is dsl language to process strings / text
+  Regular expression works based on symbols called "Patterns"
+ 
+
+Regular expression in java:
+
+java.util.regex;
+
+Regular expression uses symbols
+ +
+ *
+ ~
+ {}
+ ?
+https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html
+
+Character classes
+[abc]	a, b, or c (simple class)
+[^abc]	Any character except a, b, or c (negation)
+[a-zA-Z]	a through z or A through Z, inclusive (range)
+[a-d[m-p]]	a through d, or m through p: [a-dm-p] (union)
+[a-z&&[def]]	d, e, or f (intersection)
+[a-z&&[^bc]]	a through z, except for b and c: [ad-z] (subtraction)
+[a-z&&[^m-p]]	a through z, and not m through p: [a-lq-z](subtraction)
+
+
+Simple Pattern syntax:
+......................
+
+ \d+ -match /find any number in the string - match any number one or more times
+
+Declare pattern in java
+  
+   String pattern =  "\d+"; -  this is compile time error because, special characters
+needed to be escaped.
+   
+   String pattern ="\\d+" -  now it is vaild , because we have escaped \+ chacter by \
+
+Drawback of this syntax:
+  Very complex , when we form complex regular expressions
+eg:
+ "\\+d\\+d\\*d ^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$"
+
+package com.airbus.strings;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegularExpressionApp
+{
+    public static void main(String[] args) {
+        //Declare pattern
+        String pattern = "\\d+";  //what you want
+        System.out.println(pattern);
+        //find out all numbers from this string
+        String inputString ="hey  hello 0 1, how subramanian 1 , 7m3";
+        //logic to extract nos from the string
+        //Compile the Pattern
+        Pattern compiledPattern = Pattern.compile(pattern);
+        Matcher digitMatcher =compiledPattern.matcher(inputString);
+        System.out.println("Source String "+ inputString);
+        while(digitMatcher.find()) {
+            System.out.println(digitMatcher.group());
+        }
+
+    }
+}
+..............................................................................................
+		   
+		Groovy Simplifies the above pattern matching using "Slashy Strings"
+.............................................................................................
+
+How to write regular expressions using groovy?
+
+Version : 1 - Pattern declaration using slashy string
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+println "Regular Expression-Groovy Implementation"
+//Step 1: declare input string
+def inputString = "hey  hello 0 1, how subramanian , 7m3";
+//pattern:
+// String pattern = "\\d+";  //java syntax of defining pattern
+def pattern = /\d+/ //here we can escape special characters without using special characters
+Pattern compiledPattern = Pattern.compile(pattern);
+Matcher digitMatcher = compiledPattern.matcher(inputString);
+println("Source String " + inputString);
+while (digitMatcher.find()) {
+    println(digitMatcher.group());
+}
+
+Version 2: Replace compile Code:
+.................................
+-Replace Pattern.compile api with ~/d+/
+  => "~" is operator - compile operator,later we will discuss this deeply.
+
+println "Regular Expression-Groovy Implementation"
+//Step 1: declare input string
+def inputString = "hey  hello 0 1, how subramanian , 7m3";
+Pattern compiledPattern = ~/\d+/;
+Matcher digitMatcher = compiledPattern.matcher(inputString);
+println("Source String " + inputString);
+while (digitMatcher.find()) {
+ println(digitMatcher.group());
+}
+
+Version 3 :  slashy +pattern.compile + pattern.matcher
+........................................................
+ (inputString =~/\d+/)
+
+ "=~" - Compile + Match operator.
+
+println "Regular Expression-Groovy Implementation"
+//Step 1: declare input string
+def inputString = "hey  hello 0 1, how subramanian , 7m3";
+def compiledPattern = ~/\d+/;
+def matcher = (inputString =~ /\d+/)
+while (matcher.find()) {
+    println(matcher.group());
+}
+......................................................................................
+
+Coding Challange:
+.................
+Finding all dates in a String and getting
+//the date month and year can be as simple as below
+
+[dd-mm-yyy] - output format
+
+def dates = "28-02-1992 a b c  15-06-1982 15-Apr-1982";
+
+Expected output:
+
+28-02-1992, 15-06-1982
+..............................................................................................
+				dollar SlashyString
+..............................................................................................
+->Multi line + String interpolation
+
+  $// - multi line without interploation
+  $/""" xxx """/ multi line with interploation
+
+
+println "Dollar Slashy Strings";
+
+def name ="Subramanian"
+def dollarSlashy = $/ 
+   Hello,$name
+   100
+   prices
+   1
+   groovy
+   34
+/$
+println dollarSlashy
+def matcher = (dollarSlashy =~ /\d+/)
+while (matcher.find()) {
+    println(matcher.group());
+}
+.............................................................................................
+				Number Literals
+.............................................................................................
+
+
+Numbers:
+
+Primitives : 
+  byte,short,int,long
+  float,double
+  boolean
+  char
+Reference types
+  Integer - Wrapper classes
+  java.math.BigDecimal , java.math.BigInteger
+
+def a =100;
+a instanceof Integer
+
+How groovy identifies Integer
+  Integer.MAX_VALUE 
+
+How groovy identifies Long
+  Integer.MAX_VALUE + 1 - posstive
+  Integer.MAX_VALUE - 1 - negative values
+
+Numbers can be represented 
+ -binary
+    -prefx 0b
+
+println("Numbers")
+println "Binary Numbers"
+def a=0b10101111
+println a;
+
+ -octaal
+     -prefix 0
+println "Octal "
+def b = 077;
+println b;
+
+-hexadecimal
+   -prefix  0x
+
+println "Hexa decimals"
+def c = 0x77;
+println c;
+
+
+ -decimals
+
+println "Decimal literals"
+
+def d =10;
+BigDecimal bd =90.89;
+println("$d $bd")
+
+Underscore in literals
+......................
+  when writing long numbers , its harder to read, in order to group long numbers
+ "_" notation is used.
+
+eg: credit card numbers,sss,adharno,bigamount..
+
+
+println "Under scores"
+
+long creditCardNumber = 1234_5678_9012_3456L;
+println creditCardNumber
+////////////////////////////////////////////////////////////////////////////////////////////
+
+Number suffixes:
+
+ float f =10.5f
+
+ f / F - float
+ d / D - double
+ l/L   - long
+ G/g   - BigInteger
+ G/g    -BigDecimal
+ i - Integer
+
+long l = 1233l;
+int  j = 89i;
+...........................................................................................
+				  Booleans
+...........................................................................................
+
+Java and Booleans:
+
+In java booleans are represented by boolean type with value "true/false".
+
+boolean isValid =true;
+boolean isEnabled=false;
+
+boolean isBig = 10 > 20  // true or false
+
+    boolean isValid = true;
+        boolean isEnabled = false;
+        //If - conditional statement
+        if (isValid) {
+            System.out.println("Valid");
+        } else {
+            System.out.println("Invalid");
+        }
+        if (isEnabled) {
+            System.out.println("Enabled");
+        } else {
+            System.out.println("disabled");
+        }
+        if (10 > 20) {
+            System.out.println("Big");
+        } else {
+            System.out.println("Not Big");
+        }
+        //invalid code
+        int a=100;
+//        if(a){
+//
+//        }
+.............................*********........................................................
+			Groovy truthy and falsy values
+..............................................................................................
+In Groovy everthing is true execept the below values
+
+falsy values:
+
+1.boolean false
+2.0
+3."" (Empty string)
+4.null 
+5.Empty list => []
+6.Empty Map  => [:]
+
+def a = 100;
+if (a) {
+    println("$a is Valid")
+} else {
+    println("$a is Invalid")
+}
+def b=0
+if (b) {
+    println("$b is Valid")
+} else {
+    println("$b is Invalid")
+}
+..............................................................................................
+				  Operators
+.............................................................................................
+
+1.Arithmetic operators
+2.Relational Operators
+3.Logical Operators
+4.BitWise operators
+5.Conditional Operators
+6.Object Operators
+7.Regular Expression Operators
+8.Spread Operator
+9.Range Opeator
+10.Spaceship Operator
+11.Subscript operator
+12.Safe index operator
+13.Membership operator
+14.identity operators
+15.coercion operator
+16.Diamond operator
+17.call operator
+..............................................................................................
+					1.Arithmetic operators
+
+-Binary operator
+  Requires two operand
+-Unary operator
+  Requires one Operand
+
+Binary Operator
++ - Addition
+- - Substraction
+* - multiplication
+/ - division
+% - remainder
+** - power operator - groovy operator
+
+println "Arthimetic operators"
+
+def a = 10
+def b = 20;
+
+println "Addition ${a + b}"
+println "Substraction ${a - b}"
+println "Multiplication ${a * b}"
+println "Division ${a / b}"
+println "Remainder ${a % b}"
+println "Power of  ${a**2}"
+println "Unary + ${a++}"
+println "Unary + ${++a}"
+.............................................**************..................................
+				  Assignment Operators
+//single assignment
+def a = 10;
+def b = 20;
+println "$a $b";
+//multiple assignment : java style
+int s = 1, d = 80;
+def x = 1, y = 2;
+println "$x $y";
+//multiple assignment : groovy style
+def (x1, y1, de) = [10, 20, 9];
+println "$x1 $y1 $de";
+//mixed data type in one line
+def (status, today, counter) = [true, "02-02-19", 1];
+println "$status  $today  $counter"
+
+//extra values are left
+def (one, two) = [1, 2, 3, 4, 5];
+println "$one $two";
+
+//lesser values but extra variable and its value is null
+def (xy, xz, xa) = [1, 3];
+println "$xy $xz $xa";
+//def (name,age,city)//error
+def (name, age, city) = []; //empty brackets, all variables gets null as default value
+println "$name $age $city"
+.............................................................................................
+			Assignment and Artihmetic:
+............................................................................................
+
+ def a =90;
+ def res = a + 1
+ def a+=3
+
++=
+-=
+*=
+/=
+%=
+**=		
+
+//assignment and arthimetic
+def qty = 100;
+def qtyCounter = qty + 1;
+println("QtyCounter $qtyCounter")
+qtyCounter +=1 // short cut for the above
+println("QtyCounter $qtyCounter")
+
+..............................................................................................
+		Relational Operators: The Result would be boolean
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+== equal
+!= not equal - different
+< lessthan
+> greater than
+<= less than or equal
+>= greater than or equal
+
+def a = 10;
+def b = 10;
+println a == b;
+println a < b;
+println a <= b;
+println a > b;
+println a >= b;
+println a != b;
+////////////////////////////////////////////////////////////////////////////////////////
+Logical Operators: boolean result
+...........................................................................................
+
+&&  - logical "and"
+||  - logical "or"
+!   - logical "not"
+
+These operators works based on truth table
+
+and
+0 0  - 0
+1 0  - 0
+0 1  - 0
+1 1  - 1
+
+Or
+0 0  - 0
+1 0  - 1
+0 1  - 1
+1 1  - 1
+
+!
+0 - 1  
+1  -0
 
 
 
+def isActive = true;
+def isEnabled = true;
+println " && => " + isActive && isEnabled; //true
+println " || => " + isActive || isEnabled; //true
+println " !  => " + !isEnabled; //false
+
+def name = ""   //false
+def city = "Coimbatore";  //true
+println name && city; //?
+
+def start = 0; //0 false
+def stop = 10; //10 true
+println start || stop; // true
+
+def isEmpty; //null
+println isEmpty;
+println !isEmpty
+isEmpty = "hello"
+println !isEmpty
+..............................................................................................
+///////////////////////////////////////////////////////////////////////////////////////////
+
+Bitwise and bit shift operators:
+.................................
+
+Bitwise operators are used to maniuplate bits - based on 2's compliement theories.
+
+& - bit wise and
+| - bit wise or
+~  - bitwise negation
+
+bit shit operators
+
+<<  -left shift
+>> -right shift
+>>> - right shift unsigned.
+////////////////////////////////////////////////////////////////////////////////////////////
+				Conditional Operators
+............................................................................................
+
+1.not operator - !
+2.Tenary operator - ?:
+3.Elvis Operator  - ?
+
+Not Operator : (!)
+
+Not operator is represented with an exclamation mark and inverts the result of underlying boolean expression
+
+!true = false
+!false = true
+!''  = true
+
+Tenary Operator:
+  //Tenary operator
+
+def a = 10
+def b = 50
+//compare and say some result
+if (a == b) {
+    println("A and B are equal")
+} else {
+    println("A and B are not equal")
+}
+//the above code can be simplified using tenary operator
+
+(a == b) ? println("A and B are equal") : println("A and B are not equal")
+
+def res = (a == b) ? "A and B are equal " : "A and B are not equal"
+println(res)
+
+//tenary with other booleans
+
+def name = "Subramaian";
+def response = name ? "Hello $name" : "Hello!"
+println(response)
+
+............................................................................................
+				Elvis Operator
+............................................................................................
+The "Elvis operator" is a shortening of the ternary operator. One instance of where this is handy is for returning a 'sensible default' value if an expression resolves to false-ish
+
+def a=0
+
+ if a is true, print a's value , else assign our own default value.
 
 
+Elvis operator is used to assign default values if a variable is false.
+?: =>Elvis operator
+
+//Elvis operator is used to assign default values if a variable is false.
+
+def counter; //null
+//if counter is false,then initalize 1 else the value of the counter
+println counter ?: 1;
 
 
+//!
+def myvar = true;
+println !myvar;
+//?:
+//where ever if ..else lader you can replace with ?:
+def a = 10;
+def b = 20;
+if (a == b) {
+    println "Equal"
+} else {
+    println "Not equal"
+}
+a == b ? println("Equal") : println("Not Equal");
+def result = a == b ? "Equal" : "Not Equal";
+println result
+def name = "subramanian";
+def found = name ? "Name Found $name" : "Name not Found"
+println found;
+//////////////////////
+def price;
+//Using tenary
+println price ? price : 10;
+//Using elivs
+println price ?: 10
+
+def totalPrice = price?:10 * 100;
+println "Total Price $totalPrice"
+..............................................................................................
+			Regular Expression Operators
+..............................................................................................
+
+Pattern Operator : ~
+~/pattern/ ->Pattern
+
+//~Pattern operator
+def pattern = ~/\d+/
+println pattern instanceof Pattern
+
+Find operator:=~
+
+Alternatively to building a pattern, you can directly use the find operator =~ to build a java.util.regex.Matcher instance
+
+=~ ->Returns Matcher Instance
+
+def text="mytext"
+//=~ Find operator which returns Matcher
+def matcher = (text =~/\d+/);
+println matcher instanceof Matcher; 
 
 
+Match operator:
+..............
+
+ ==~ Matcher Operator : returns boolean
+ !=~ Matcher Operator : returns boolean
+
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+//
+def pattern = ~/\d+/
+println pattern instanceof Pattern
+
+def text="mytext 45 67"
+//=~ Find operator which returns Matcher
+def matcher = (text =~/\d+/);
+println matcher instanceof Matcher;
+
+// ==~ : match operator which returns boolean
+
+def result =  (text ==~/\d+/)
+println(result)
+..............................................................................................
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+                                          Conditional Strucutures
+/////////////////////////////////////////////////////////////////////////////////////////////
+def isActive = true;
+if (isActive) {
+    println "Active"
+} else {
+    println "Not Active"
+}
+def x = "hello";
+def result = "";
+
+switch (x) {
+    case "foo":
+        result = "foo value"
+        break
+    case "bar":
+        result = "bar value"
+        break
+    case 122:
+        result = "some numbers"
+        break
+    case true:
+        result = "some boolean"
+        break
+    case Integer:
+        result = "Integer value"
+        break
+    case ~/fo*/:
+        result = "Regular expression value"
+        break
+    case Number:
+        result = "Number value"
+        break;
+        default:
+        result = "No match found"
+        break;
+}
+println result;
+..............................................................................................
+/////////////////////////////////////////////////////////////////////////////////////////////
+				Iterators - Loops
+/////////////////////////////////////////////////////////////////////////////////////////////
+for (int i = 0; i < 10; i++) {
+    println i;
+}
+for (def i = 0; i < 10; i++) {
+    println i;
+}
+
+def x = 0
+def y = 5
+while (y-- > 0) {
+    x++
+    println "Y $y"
+}
+println x;
+//do ..while
+def counter = 5;
+def fact = 1;
+do {
+    fact *= counter--
+} while (counter > 1)
+println fact
+.............................................................................................
+Coding Challanges:
+..................
+
+Q:1.find even numbers from 0 to 1000 range.
 
 
+Q.2.find Grade for given score
 
+ score is greater than 95 - A
 
+ 80 tO 95 - Grade B
 
-
-
-
-
+ 60 to 80 -Grade C
+ 
+ 50 TO 60 - Grade D
+ 
+ less THAN 50 - F 
+............................................................................................
 

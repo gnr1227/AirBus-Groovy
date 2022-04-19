@@ -1,3 +1,5 @@
+//import java.lang.*;
+
 public class TypeDemo {
     public static void main(String[] args) {
         byte a = 10;  //byte <=== int

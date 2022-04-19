@@ -1,0 +1,1 @@
+def shell = new GroovyShell().evaluate(new File("hello.groovy"))
